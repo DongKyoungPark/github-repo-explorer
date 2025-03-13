@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import RepositoryCard from '../app/components/RepositoryCard';
+import RepositoryCard from '@/app/components/RepositoryCard';
 
 const meta = {
   title: 'Components/RepositoryCard',
@@ -8,6 +8,16 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    repository: {
+      control: 'object',
+      description: 'Repository information object',
+    },
+    username: {
+      control: 'text',
+      description: 'GitHub username',
+    },
+  },
 } satisfies Meta<typeof RepositoryCard>;
 
 export default meta;
@@ -69,6 +79,37 @@ export const NoLanguage: Story = {
       updated_at: '2023-01-10T09:15:00Z',
       language: null,
       html_url: 'https://github.com/username/no-language-repo',
+    },
+    username: 'username',
+  },
+};
+
+export const LongRepositoryName: Story = {
+  args: {
+    repository: {
+      id: 5,
+      name: 'this-is-a-very-long-repository-name-to-test-how-it-looks',
+      description: 'This repository has a very long name',
+      stargazers_count: 27,
+      updated_at: '2023-04-05T14:20:00Z',
+      language: 'JavaScript',
+      html_url:
+        'https://github.com/username/this-is-a-very-long-repository-name-to-test-how-it-looks',
+    },
+    username: 'username',
+  },
+};
+
+export const RecentlyUpdated: Story = {
+  args: {
+    repository: {
+      id: 6,
+      name: 'recent-updates',
+      description: 'A repository that was recently updated',
+      stargazers_count: 83,
+      updated_at: new Date().toISOString(),
+      language: 'Go',
+      html_url: 'https://github.com/username/recent-updates',
     },
     username: 'username',
   },

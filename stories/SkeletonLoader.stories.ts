@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import SkeletonLoader from '../app/components/SkeletonLoader';
+import SkeletonLoader from '@/app/components/SkeletonLoader';
 
 const meta = {
   title: 'Components/SkeletonLoader',
