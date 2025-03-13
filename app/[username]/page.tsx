@@ -68,28 +68,27 @@ export default function UserPage() {
     }
   }, [username]);
 
-  // Apply filters and sorting
   useEffect(() => {
     if (repositories.length === 0) return;
 
     let filtered = [...repositories];
 
-    // Apply language filter
     if (filterBy !== 'all') {
       if (filterBy === 'other') {
         filtered = filtered.filter(
           (repo) =>
-            repo.language !== 'JavaScript' &&
-            repo.language !== 'TypeScript' &&
-            repo.language !== 'Python' &&
+            repo.language?.toLowerCase() !== 'javascript' &&
+            repo.language?.toLowerCase() !== 'typescript' &&
+            repo.language?.toLowerCase() !== 'python' &&
             repo.language !== null
         );
       } else {
-        filtered = filtered.filter((repo) => repo.language === filterBy);
+        filtered = filtered.filter(
+          (repo) => repo.language?.toLowerCase() === filterBy.toLowerCase()
+        );
       }
     }
 
-    // Apply sorting
     if (sortBy === 'updated') {
       filtered.sort(
         (a, b) =>
