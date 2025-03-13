@@ -144,3 +144,7 @@ foreedom/
 ├── tsconfig.json         # TypeScript 설정
 └── package.json          # 프로젝트 의존성 및 스크립트
 ```
+
+## 배포 URL
+
+https://github-repo-explorer-nu.vercel.app/
