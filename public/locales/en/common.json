@@ -1,0 +1,40 @@
+{
+  "app_title": "GitHub Repository Explorer",
+  "search": {
+    "placeholder": "Enter GitHub username",
+    "button": "Search",
+    "error": "An error occurred while fetching data",
+    "no_results": "No repositories found",
+    "loading": "Loading..."
+  },
+  "repository": {
+    "name": "Repository Name",
+    "description": "Description",
+    "stars": "Stars",
+    "last_updated": "Last Updated",
+    "forks": "Forks",
+    "language": "Language",
+    "issues": "Open Issues",
+    "view_on_github": "View on GitHub"
+  },
+  "filter": {
+    "title": "Filter",
+    "language": "Language",
+    "all": "All",
+    "javascript": "JavaScript",
+    "typescript": "TypeScript",
+    "python": "Python",
+    "other": "Other"
+  },
+  "sort": {
+    "title": "Sort",
+    "updated": "Recently Updated",
+    "stars": "Most Stars"
+  },
+  "header": {
+    "language": "Language",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light"
+  }
+}
