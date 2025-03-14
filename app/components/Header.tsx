@@ -1,35 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 
 export function Header() {
   const { t, i18n } = useTranslation('common');
   const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia(
-        '(prefers-color-scheme: dark)'
-      ).matches;
-
-      const shouldUseDarkMode =
-        savedTheme === 'dark' || (!savedTheme && prefersDark);
-
-      setIsDarkMode(shouldUseDarkMode);
-
-      if (shouldUseDarkMode) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        if (savedTheme === 'light') {
-          document.documentElement.classList.add('light');
-        }
-      }
-    }
-  }, []);
 
   const toggleTheme = () => {
     const newMode = !isDarkMode;
@@ -44,10 +21,6 @@ export function Header() {
     }
 
     localStorage.setItem('theme', newMode ? 'dark' : 'light');
-
-    document.cookie = `theme=${
-      newMode ? 'dark' : 'light'
-    }; path=/; max-age=31536000`;
   };
 
   const changeLanguage = (locale: string) => {

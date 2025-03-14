@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { cookies } from 'next/headers';
 import { Header } from '@/app/components/Header';
-import TranslationsProvider from './TranslationsProvider';
-import { defaultLocale } from './i18n-config';
+import { defaultLocale } from '@/translate/i18n-config';
+import TranslationsProvider from '@/translate/TranslationsProvider';
 import './globals.css';
 
 const geistSans = Geist({
@@ -34,10 +34,7 @@ export default async function RootLayout({
   const theme = themeCookie?.value;
 
   return (
-    <html
-      lang={locale}
-      className={theme === 'dark' ? 'dark' : theme === 'light' ? 'light' : ''}
-    >
+    <html lang={locale} className={theme === 'dark' ? 'dark' : 'light'}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground`}
       >

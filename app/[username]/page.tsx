@@ -47,8 +47,10 @@ export default function UserPage() {
           `https://api.github.com/users/${username}/repos?per_page=100`
         );
 
-        if (!response.ok) {
-          if (response.status === 404) {
+        const { ok, status } = response;
+
+        if (!ok) {
+          if (status === 404) {
             throw new Error('User not found');
           }
           throw new Error('Failed to fetch repositories');

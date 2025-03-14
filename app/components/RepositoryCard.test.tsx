@@ -2,15 +2,49 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import RepositoryCard from './RepositoryCard';
 
+type TranslationKeys = 'repository.last_updated' | 'repository.view_on_github';
+type Languages = 'ko' | 'en';
+type TranslationsType = Record<Languages, Record<TranslationKeys, string>>;
+
+const i18nextMock = {
+  currentLanguage: 'ko' as Languages,
+
+  translations: {
+    ko: {
+      'repository.last_updated': '마지막 업데이트',
+      'repository.view_on_github': 'GitHub에서 보기',
+    },
+    en: {
+      'repository.last_updated': 'Last updated',
+      'repository.view_on_github': 'View on GitHub',
+    },
+  } as TranslationsType,
+
+  t: function (key: TranslationKeys | string): string {
+    return (
+      this.translations[this.currentLanguage]?.[key as TranslationKeys] || key
+    );
+  },
+
+  i18n: {
+    get language() {
+      return i18nextMock.currentLanguage;
+    },
+    changeLanguage: function (lang: Languages) {
+      i18nextMock.currentLanguage = lang;
+      return Promise.resolve();
+    },
+  },
+
+  setLanguage: function (lang: Languages) {
+    this.currentLanguage = lang;
+  },
+};
+
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
-    t: (key: string) => {
-      const translations: Record<string, string> = {
-        'repository.last_updated': '마지막 업데이트',
-        'repository.view_on_github': 'GitHub에서 보기',
-      };
-      return translations[key] || key;
-    },
+    t: (key: string) => i18nextMock.t(key),
+    i18n: i18nextMock.i18n,
   }),
 }));
 
@@ -40,6 +74,11 @@ describe('RepositoryCard 컴포넌트', () => {
   };
 
   const username = 'testuser';
+
+  beforeEach(() => {
+    // Reset language to Korean before each test
+    i18nextMock.setLanguage('ko');
+  });
 
   it('저장소 정보가 올바르게 렌더링됩니다', () => {
     render(<RepositoryCard repository={mockRepository} username={username} />);
@@ -102,5 +141,30 @@ describe('RepositoryCard 컴포넌트', () => {
       'href',
       '/testuser/test-repo'
     );
+  });
+
+  it('언어가 한글에서 영어로 변경될 때 올바르게 렌더링됩니다', () => {
+    const { rerender } = render(
+      <RepositoryCard repository={mockRepository} username={username} />
+    );
+
+    expect(
+      screen.getByText(/마지막 업데이트: Jun 1, 2023/)
+    ).toBeInTheDocument();
+    expect(screen.getByText('GitHub에서 보기')).toBeInTheDocument();
+
+    i18nextMock.setLanguage('en');
+
+    rerender(
+      <RepositoryCard repository={mockRepository} username={username} />
+    );
+
+    expect(screen.getByText(/Last updated: Jun 1, 2023/)).toBeInTheDocument();
+    expect(screen.getByText('View on GitHub')).toBeInTheDocument();
+
+    expect(screen.getByText('test-repo')).toBeInTheDocument();
+    expect(screen.getByText('테스트 저장소 설명입니다')).toBeInTheDocument();
+    expect(screen.getByText('42')).toBeInTheDocument();
+    expect(screen.getByText('TypeScript')).toBeInTheDocument();
   });
 });

@@ -2,9 +2,10 @@
 
 import { PropsWithChildren, useEffect, useState } from 'react';
 import { I18nextProvider } from 'react-i18next';
-import { initTranslations } from './i18n';
-import { defaultLocale } from './i18n-config';
+import { initTranslations } from '@/translate/i18n';
+import { defaultLocale } from '@/translate/i18n-config';
 import type { i18n } from 'i18next';
+import Loading from '@/app/components/Loading';
 
 export default function TranslationsProvider({
   children,
@@ -28,7 +29,8 @@ export default function TranslationsProvider({
   if (!instance) {
     return (
       <div className="flex justify-center items-center h-screen">
-        Loading translations...
+        <Loading />
+        Loading...
       </div>
     );
   }
