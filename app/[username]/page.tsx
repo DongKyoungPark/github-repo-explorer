@@ -130,7 +130,7 @@ export default function UserPage() {
         </div>
         <Link
           href="/"
-          className="inline-block mt-4 text-blue-600 dark:text-blue-400 hover:underline"
+          className="inline-block mt-4 text-blue-400 hover:underline"
         >
           ← {t('search.button')}
         </Link>
@@ -142,10 +142,7 @@ export default function UserPage() {
     <div className="container mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold ">{username}</h1>
-        <Link
-          href="/"
-          className="text-blue-600 dark:text-blue-400 hover:underline"
-        >
+        <Link href="/" className="text-blue-400 hover:underline">
           ← {t('search.button')}
         </Link>
       </div>
@@ -159,7 +156,7 @@ export default function UserPage() {
             <select
               value={filterBy}
               onChange={(e) => setFilterBy(e.target.value as FilterOption)}
-              className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             >
               <option value="all">{t('filter.all')}</option>
               <option value="javascript">{t('filter.javascript')}</option>
@@ -176,7 +173,7 @@ export default function UserPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              className="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             >
               <option value="updated">{t('sort.updated')}</option>
               <option value="stars">{t('sort.stars')}</option>
@@ -191,7 +188,7 @@ export default function UserPage() {
       </div>
 
       {filteredRepos.length === 0 ? (
-        <div className="p-4 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-md">
+        <div className="p-4 bg-red-900/60 text-red-700 dark:text-red-300 rounded-md">
           {t('search.no_results')}
         </div>
       ) : (
@@ -201,7 +198,7 @@ export default function UserPage() {
           hasMore={hasMore}
           loader={<SkeletonLoader count={2} />}
           endMessage={
-            <p className="text-center text-gray-500 dark:text-gray-400 my-4">
+            <p className="text-center text-gray-400 my-4">
               End of repositories
             </p>
           }

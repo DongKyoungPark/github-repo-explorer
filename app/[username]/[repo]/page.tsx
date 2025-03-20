@@ -80,7 +80,7 @@ export default function RepositoryDetailPage() {
   if (error || !repository) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-md">
+        <div className="p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-500 rounded-md">
           {error || 'Repository not found'}
         </div>
         <Link
@@ -96,22 +96,19 @@ export default function RepositoryDetailPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-6">
-        <Link
-          href={`/${username}`}
-          className="text-blue-600 dark:text-blue-400 hover:underline"
-        >
+        <Link href={`/${username}`} className="text-blue-400 hover:underline">
           ← {username}
         </Link>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 md:p-8">
+      <div className="bg-gray-800 rounded-lg shadow-lg p-6 md:p-8">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-2">
+            <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">
               {repository.name}
             </h1>
             {repository.description && (
-              <p className="text-gray-600 dark:text-gray-300 text-lg mb-4">
+              <p className="text-gray-300 text-lg mb-4">
                 {repository.description}
               </p>
             )}
@@ -140,11 +137,11 @@ export default function RepositoryDetailPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
-            <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+          <div className="bg-gray-700 p-4 rounded-lg">
+            <div className="text-sm text-gray-400 mb-1">
               {t('repository.stars')}
             </div>
-            <div className="flex items-center text-xl font-semibold">
+            <div className="flex items-center text-xl font-semibold text-white">
               <svg
                 className="w-5 h-5 text-yellow-500 mr-1"
                 fill="currentColor"
@@ -156,11 +153,11 @@ export default function RepositoryDetailPage() {
             </div>
           </div>
 
-          <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
-            <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+          <div className="bg-gray-700 p-4 rounded-lg">
+            <div className="text-sm text-gray-400 mb-1">
               {t('repository.forks')}
             </div>
-            <div className="flex items-center text-xl font-semibold">
+            <div className="flex items-center text-xl font-semibold text-white">
               <svg
                 className="w-5 h-5 text-gray-600 dark:text-gray-300 mr-1"
                 fill="currentColor"
@@ -177,11 +174,11 @@ export default function RepositoryDetailPage() {
             </div>
           </div>
 
-          <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
-            <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+          <div className="bg-gray-700 p-4 rounded-lg">
+            <div className="text-sm text-gray-400 mb-1">
               {t('repository.issues')}
             </div>
-            <div className="flex items-center text-xl font-semibold">
+            <div className="flex items-center text-xl font-semibold text-white">
               <svg
                 className="w-5 h-5 text-red-500 mr-1"
                 fill="currentColor"
@@ -197,17 +194,17 @@ export default function RepositoryDetailPage() {
             </div>
           </div>
 
-          <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
-            <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+          <div className="bg-gray-700 p-4 rounded-lg">
+            <div className="text-sm text-gray-400 mb-1">
               {t('repository.language')}
             </div>
-            <div className="text-xl font-semibold">
+            <div className="text-xl font-semibold text-white">
               {repository.language || '-'}
             </div>
           </div>
         </div>
 
-        <div className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="text-sm text-gray-400">
           {t('repository.last_updated')}: {formatDate(repository.updated_at)}
         </div>
       </div>

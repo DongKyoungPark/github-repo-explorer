@@ -29,21 +29,18 @@ export function Header() {
   };
 
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-sm py-4">
+    <header className="bg-gray-800 shadow-sm py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link
-          href="/"
-          className="text-xl font-bold text-blue-600 dark:text-blue-400"
-        >
+        <Link href="/" className="text-xl font-bold text-blue-400">
           {t('app_title')}
         </Link>
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+            <span className="text-sm text-gray-400">
               {t('header.language')}
             </span>
             <select
-              className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-200 border border-gray-300 dark:border-gray-600 text-sm rounded-md p-1"
+              className="bg-gray-700 text-gray-200 border border-gray-300 dark:border-gray-600 text-sm rounded-md p-1"
               onChange={(e) => changeLanguage(e.target.value)}
               defaultValue={i18n.language || 'en'}
             >
@@ -53,7 +50,7 @@ export function Header() {
           </div>
           <button
             onClick={toggleTheme}
-            className="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+            className="flex items-center text-gray-400 hover:hover:text-blue-400"
           >
             {isDarkMode ? (
               <>

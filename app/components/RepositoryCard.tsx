@@ -32,11 +32,11 @@ export default function RepositoryCard({
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+    <div className="bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
         <Link
           href={`/${username}/${repository.name}`}
-          className="text-xl font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+          className="text-xl font-semibold text-blue-400 hover:underline"
         >
           {repository.name}
         </Link>
@@ -52,28 +52,24 @@ export default function RepositoryCard({
             {repository.stargazers_count}
           </span>
           {repository.language && (
-            <span className="text-gray-600 dark:text-gray-300">
-              {repository.language}
-            </span>
+            <span className="text-gray-300">{repository.language}</span>
           )}
         </div>
       </div>
 
       {repository.description && (
-        <p className="text-gray-600 dark:text-gray-300 mb-4">
-          {repository.description}
-        </p>
+        <p className="text-gray-300 mb-4">{repository.description}</p>
       )}
 
       <div className="flex flex-wrap justify-between items-center text-sm">
-        <span className="text-gray-500 dark:text-gray-400">
+        <span className="text-gray-400">
           {t('repository.last_updated')}: {formatDate(repository.updated_at)}
         </span>
         <a
           href={repository.html_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 sm:mt-0 text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+          className="mt-2 sm:mt-0 text-blue-400 hover:underline flex items-center"
         >
           <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
             <path

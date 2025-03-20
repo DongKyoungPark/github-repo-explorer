@@ -40,14 +40,12 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)]">
-      <div className="w-full max-w-lg p-8 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+      <div className="w-full max-w-lg p-8 bg-gray-800 rounded-lg shadow-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
+          <h1 className="text-3xl font-bold text-white mb-2">
             {t('app_title')}
           </h1>
-          <p className="text-gray-600 dark:text-gray-300">
-            {t('search.placeholder')}
-          </p>
+          <p className="text-gray-300">{t('search.placeholder')}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="mb-6">
@@ -57,7 +55,7 @@ export default function Home() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder={t('search.placeholder')}
-              className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              className="flex-1 px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
             />
             <button
               type="submit"
@@ -87,7 +85,7 @@ export default function Home() {
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            className="flex items-center text-gray-400 hover:text-gray-900 dark:hover:text-white"
           >
             <svg
               className="w-6 h-6 mr-2"
